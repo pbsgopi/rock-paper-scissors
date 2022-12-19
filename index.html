@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var computerScore=0;
+    var playerScore=0;
+    //computer choice
+    const myArray=["rock","paper","scissors"];
+    function getComputerChoice (){
+        return myArray[~~(Math.random() * myArray.length)];
+    }
+
+    //let's play the game
+    function playRound (playerSelection,computerSelection) {
+        if (computerSelection == playerSelection) {
+            console.log( "Tie game!" );
+        } 
+        else if (
+            (computerSelection == "rock" && playerSelection == "scissors") ||
+            (computerSelection == "scissors" && playerSelection == "paper") ||
+            (computerSelection == "paper" && playerSelection == "rock")
+            ) {
+                computerScore++;
+                console.log(`You Lose!,${computerSelection} beats ${playerSelection}`);
+                
+            }
+        else if (
+            (playerSelection == "rock" && computerSelection=="scissors") || 
+            (playerSelection == "paper"&& computerSelection=="rock") || 
+            (playerSelection == "scissors" && computerSelection=="paper")
+            ) {
+                playerScore++;
+                console.log (`You Won!,${playerSelection} beats ${computerSelection}`);
+                
+            }
+    }
+
+    //no. of rounds
+    function game (){
+        for (let i = 0; i < 5; i++){
+            playRound(prompt("Enter One of These: rock or paper or scissors"),getComputerChoice());
+        }
+        
+    if (playerScore > computerScore){
+        alert("You Win");
+    }
+    else if(playerScore < computerScore){
+        alert("You Lose");
+    }
+    else if(playerScore == computerScore){
+        alert("It's a Tie");
+    }
+    }
+    //calling the function
+    game()
+
+</script>
+<body>
+
+</body>
+</html>
